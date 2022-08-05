@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: black;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  --gap: 2vmax;
+  --padding-slider: 5vmax;
+  --viewport-width-slider: 100vw - var(--padding-slider) * 2;
+  --items: 4;
+  --item-width: calc(
+    (var(--viewport-width-slider) - var(--gap) * (var(--items) - 1)) /
+      var(--items)
+  );
+  width: 100%;
+  height: 30vh;
+  padding: 0 var(--padding-slider);
+  user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.half {
+  display: none;
+  top: 20%;
+  left: 5vmax;
+  position: absolute;
+  height: 30vh;
+  width: calc(((100vw - 5vmax * 2 - 2vmax * 3) / 4 / 2));
+  background-color: red;
+}
+
+.slider-list {
+  width: 100%;
+  height: 100%;
+}
+
+.slider-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--item-width);
+  grid-gap: var(--gap);
+  width: max-content;
+  height: 100%;
+  touch-action: none;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+.slide {
+  background-color: white;
+  height: 30vh;
+  width: var(--item-width);
+  user-select: none;
+  color: #000;
+  font-size: 36px;
+}
+
+.gapElementToCount {
+  visibility: hidden;
+  position: absolute;
+  width: var(--gap);
+}
+
+.red {
+  background-color: red;
+}
+
+@media (max-width: 1024px) {
+  .slider {
+    --items: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    --items: 1;
+  }
+}

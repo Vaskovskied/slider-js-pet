@@ -225,15 +225,16 @@ class Slider {
 
   start() {
     this.addEventListeners();
-    onResizeWidthOnly(() => {
-      slider.onResize();
-    });
   }
 }
 
-const slider = new Slider(document.querySelector(".slider"), 2, false, 0.5);
+const slider = new Slider(document.querySelector("#slider"), 2, false, 0.5);
 
 slider.start();
+
+onResizeWidthOnly(() => {
+  slider.onResize();
+});
 
 function getEventType(e) {
   if (e.type.includes("touch")) {
